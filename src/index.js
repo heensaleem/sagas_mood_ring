@@ -18,6 +18,7 @@ import createSagaMiddleware from 'redux-saga';
 function* rootSaga() {
     yield takeEvery('FETCH_IMAGES', getImagesSaga)
     yield takeEvery('FETCH_TAGS', getTagsSaga)
+    yield takeEvery('ADD_TAGS', postTagsSaga)
     
 
 }
@@ -44,11 +45,14 @@ function* getTagsSaga(){
      }
 }
 
-// function* PostTagsSaga(){
-//     try{
-//         yield axios.post('/api/images/addtag');
-//     }
-// }
+function* postTagsSaga(action) {
+    try {
+        yield axios.post('/api/images/addtag', action.payload)
+        yield put({ type: 'FETCH_TAGS' })
+    } catch (err) {
+        console.log('error in post',err);
+    }
+}
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();

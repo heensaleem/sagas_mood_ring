@@ -5,13 +5,13 @@ import TagsForm from '../TagsForm/TagsForm';
 
 class ImagesForm extends Component {
 
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_IMAGES' })
+    }
+
     state = {
         currentIndex: 0
 
-    }
-
-    componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_IMAGES' })
     }
 
     conditionalImage = () => {
@@ -29,41 +29,40 @@ class ImagesForm extends Component {
                 <div>
                     <button onClick={() => this.setIndex('decrease')}>Previous</button>
                     <button onClick={() => this.setIndex('increase')}>Next</button>
-
                 </div>
             </div>
         )
-
-
     }
 
     setIndex = (string) => {
         if (string === 'decrease') {
             console.log('clicked on Previous button');
-            if(this.state.currentIndex - 1 < 0){
+            if (this.state.currentIndex - 1 < 0) {
                 this.setState({
                     currentIndex: this.props.imageList.length - 1
-                })}else{
-                    this.setState({
-                        currentIndex: this.state.currentIndex - 1
-                    })
-                }
-        
+                })
+            } else {
+                this.setState({
+                    currentIndex: this.state.currentIndex - 1
+                })
+            }
+
 
         } else if (string === 'increase') {
             console.log('clicked on NEXT button');
             // this.setState({
             //     currentIndex: this.state.currentIndex + 1
             // })            
-            if(this.state.currentIndex +1 > this.props.imageList.length - 1){
-             this.setState({
-                 currentIndex: 0
-             })}else{
-                 this.setState({
-                     currentIndex: this.state.currentIndex + 1
-                 })
-             }
-            
+            if (this.state.currentIndex + 1 > this.props.imageList.length - 1) {
+                this.setState({
+                    currentIndex: 0
+                })
+            } else {
+                this.setState({
+                    currentIndex: this.state.currentIndex + 1
+                })
+            }
+
         }
     }
 
@@ -72,9 +71,10 @@ class ImagesForm extends Component {
         console.log("images", this.props.imageList);
         return (
             <div>
-                <pre>{JSON.stringify(this.props.imageList)}</pre>
+                <h2>Image Title</h2>
+                {/* <pre>{JSON.stringify(this.props.imageList)}</pre> */}
                 {this.conditionalImage()}
-                <TagsForm currentImageIndex={this.state.currentIndex}/>
+                <TagsForm currentImageIndex={this.state.currentIndex} />
             </div>
         )
     }
