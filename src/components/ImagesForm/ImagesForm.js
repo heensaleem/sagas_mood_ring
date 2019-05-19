@@ -1,81 +1,90 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../ImagesForm/Images.css';
+import TagsForm from '../TagsForm/TagsForm';
 
 class ImagesForm extends Component {
 
     state = {
-        currentIndex: 1
+        currentIndex: 0
+
     }
 
     componentDidMount() {
-        this.props.dispatch({type: 'FETCH_IMAGES'})
+        this.props.dispatch({ type: 'FETCH_IMAGES' })
     }
 
     conditionalImage = () => {
-        return(
+        return (
             (this.props.imageList.length > 0) ?
-            this.renderImage() :            
-            <div></div>
+                this.renderImage() :
+                <div></div>
         )
     }
 
     renderImage = () => {
         return (
             <div>
-        <img alt=''className="Image" src={this.props.imageList[this.state.currentIndex].path} />
-        <div>
-            <button onClick={() => this.setIndex('decrease')}>Previous</button>
-            <button onClick={() => this.setIndex('increase')}>Next</button>
+                <img alt='' className="Image" src={this.props.imageList[this.state.currentIndex].path} />
+                <div>
+                    <button onClick={() => this.setIndex('decrease')}>Previous</button>
+                    <button onClick={() => this.setIndex('increase')}>Next</button>
 
-        </div>  
-        </div> 
+                </div>
+            </div>
         )
-        
-        
+
+
     }
 
     setIndex = (string) => {
-         if(string === 'decrease'){
+        if (string === 'decrease') {
             console.log('clicked on Previous button');
-            this.setState({
-                currentIndex: this.state.currentIndex - 1
-            })
-            
-         }else if(string === 'increase'){
+            if(this.state.currentIndex - 1 < 0){
+                this.setState({
+                    currentIndex: this.props.imageList.length - 1
+                })}else{
+                    this.setState({
+                        currentIndex: this.state.currentIndex - 1
+                    })
+                }
+        
+
+        } else if (string === 'increase') {
             console.log('clicked on NEXT button');
-            this.setState({
-                currentIndex: this.state.currentIndex + 1
-            })
-             
-         }
+            // this.setState({
+            //     currentIndex: this.state.currentIndex + 1
+            // })            
+            if(this.state.currentIndex +1 > this.props.imageList.length - 1){
+             this.setState({
+                 currentIndex: 0
+             })}else{
+                 this.setState({
+                     currentIndex: this.state.currentIndex + 1
+                 })
+             }
+            
+        }
     }
 
-    // render() {
-    //     return (
-        //   <div>
-        //       <pre>{JSON.stringify(this.props.imageList)}</pre>
-        //     {this.props.imageList.map((image, i) => {
-        //       return <div key={i}><img className="Image" src={image.path} /></div>
-        //   })}
-        //   </div>
-        render(){
-            console.log("images", this.props.imageList);
-            return(
-                <div>
-                    <pre>{JSON.stringify(this.props.imageList)}</pre>                
-                    {this.conditionalImage()}
-                
-                </div>
-            )
-        }
 
-}    
+    render() {
+        console.log("images", this.props.imageList);
+        return (
+            <div>
+                <pre>{JSON.stringify(this.props.imageList)}</pre>
+                {this.conditionalImage()}
+                <TagsForm currentImageIndex={this.state.currentIndex}/>
+            </div>
+        )
+    }
+
+}
 
 const mapStateToProps = (reduxState) => {
     return {
-      imageList: reduxState.images
+        imageList: reduxState.images
     }
-  }
-  
-  export default connect(mapStateToProps)(ImagesForm);
+}
+
+export default connect(mapStateToProps)(ImagesForm);
