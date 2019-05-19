@@ -5,7 +5,7 @@ import '../ImagesForm/Images.css';
 class ImagesForm extends Component {
 
     state = {
-        currentIndex: 0
+        currentIndex: 1
     }
 
     componentDidMount() {
@@ -37,9 +37,17 @@ class ImagesForm extends Component {
 
     setIndex = (string) => {
          if(string === 'decrease'){
-           return this.state.currentIndex - 1
+            console.log('clicked on Previous button');
+            this.setState({
+                currentIndex: this.state.currentIndex - 1
+            })
+            
          }else if(string === 'increase'){
-            return this.state.currentIndex + 1 
+            console.log('clicked on NEXT button');
+            this.setState({
+                currentIndex: this.state.currentIndex + 1
+            })
+             
          }
     }
 
