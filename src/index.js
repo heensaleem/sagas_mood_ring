@@ -12,7 +12,20 @@ import createSagaMiddleware from 'redux-saga';
 
 // Create the rootSaga generator function
 function* rootSaga() {
+    yield takeEvery('FETCH_IMAGES', getImagesSaga)
+    yield takeEvery('FETCH_TAGS', getTagsSaga)
 
+}
+
+function* getImagesSaga(){
+    try{
+        const imagesResponse =  yield axios.get(`/api/images`);
+         console.log(imagesResponse);
+        
+         yield put({ type: 'SET_IMAGES', payload: imagesResponse.data })
+     }catch(error){
+         console.log('Error in getImagesSaga', error);
+     }
 }
 
 // Create sagaMiddleware
