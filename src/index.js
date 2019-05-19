@@ -7,13 +7,17 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 // Provider allows us to use redux within our react app
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
+import { put, takeEvery } from 'redux-saga/effects'
+import axios from 'axios'
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
+
+
 
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_IMAGES', getImagesSaga)
-    yield takeEvery('FETCH_TAGS', getTagsSaga)
+    
 
 }
 
