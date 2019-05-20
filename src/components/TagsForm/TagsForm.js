@@ -28,7 +28,7 @@ class TagssForm extends Component {
   render() {
     return (
       <div>
-        {/* <pre>{JSON.stringify(this.props.tagsList)}</pre> */}
+         <pre>{JSON.stringify(this.props.tagNameList)}</pre> 
 
         <select value={this.state.tag_id} onChange={this.handleTagChange}>
           <option disabled value="0">Pick One!</option>
@@ -55,8 +55,8 @@ class TagssForm extends Component {
 const mapStateToProps = (reduxState) => {
   return {
     tagsList: reduxState.tags,
-    imageList: reduxState.images
-    //tagNameList: reduxState.tagsName.images_id
+    imageList: reduxState.images,
+    tagNameList: reduxState.tagsName.images_id
   }
 }
 

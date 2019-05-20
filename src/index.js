@@ -78,21 +78,21 @@ const tags = (state = [], action) => {
 }
 
 //used to store the images_id and tags_id
-//   const tagsName = (state = [], action) => {
-//       switch (action.type) {
-//           case 'FETCH_TAGS':
-//               return action.payload;
-//           default:
-//               return state;
-//       }
-//   }
+   const tagsName = (state = [], action) => {
+       switch (action.type) {
+           case 'ADD_TAGS':
+               return action.payload;
+           default:
+               return state;
+       }
+   }
 
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         images,
-        tags
-        //tagsName
+        tags,
+        tagsName
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
