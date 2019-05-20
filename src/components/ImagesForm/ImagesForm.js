@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../ImagesForm/Images.css';
 import TagsForm from '../TagsForm/TagsForm';
+import Button from '@material-ui/core/Button';
 
 class ImagesForm extends Component {
 
@@ -26,8 +27,8 @@ class ImagesForm extends Component {
             <div>
                 <img alt='' className="Image" src={this.props.imageList[this.state.currentIndex].path} />
                 <div>
-                    <button className="previous" onClick={() => this.setIndex('decrease')}>Previous</button>
-                    <button className="next" onClick={() => this.setIndex('increase')}>Next</button>
+                    <Button variant="raised" color="primary" className="previous" onClick={() => this.setIndex('decrease')}>Previous</Button>
+                    <Button variant="raised" color="primary" className="next" onClick={() => this.setIndex('increase')}>Next</Button>
                 </div>
             </div>
         )
