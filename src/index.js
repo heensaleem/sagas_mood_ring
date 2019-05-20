@@ -22,7 +22,7 @@ function* rootSaga() {
     
 
 }
-
+//to get /api/images from the database and dispatch response to the reducer
 function* getImagesSaga(){
     try{
         const imagesResponse =  yield axios.get('/api/images');
@@ -33,7 +33,7 @@ function* getImagesSaga(){
          console.log('Error in getImagesSaga', error);
      }
 }
-
+//get tags from the database and dispatch response to the reducer
 function* getTagsSaga(){
     try{
         const tagsResponse =  yield axios.get(`/api/tags`);
@@ -44,7 +44,7 @@ function* getTagsSaga(){
          console.log('Error in getTagsSaga', error);
      }
 }
-
+//post the data from the dom collected into the junction table
 function* postTagsSaga(action) {
     try {
         yield axios.post('/api/images/addtag', action.payload)
@@ -77,11 +77,22 @@ const tags = (state = [], action) => {
     }
 }
 
+//used to store the images_id and tags_id
+//   const tagsName = (state = [], action) => {
+//       switch (action.type) {
+//           case 'FETCH_TAGS':
+//               return action.payload;
+//           default:
+//               return state;
+//       }
+//   }
+
 // Create one store that all components can use
 const storeInstance = createStore(
     combineReducers({
         images,
-        tags,
+        tags
+        //tagsName
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
