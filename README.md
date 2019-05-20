@@ -10,22 +10,22 @@ This project is an image carousel tagging app! User may able to change the image
 
 
 
-##Built With
+## Built With
 
 
  node js express React npm JSX React-Redux materialUI redux-saga
 
-##Getting Started
+## Getting Started
 
 
  node js
 
-##Prerequisites
+## Prerequisites
 
 
  Node.js -- (https://nodejs.org/en/) Code editor Installing Download project with git clone npm install killall node if necessary npm run server on one terminal npm run client on one terminal
 
-##Setup All data is stored in an array on the server.
+## Setup All data is stored in an array on the server.
 
 Running the server code requires nodemon. If you don't already have nodemon, install it globally with npm install nodemon --global.
 
@@ -37,12 +37,12 @@ npm run client
 
 Between the server and client, you'll need two terminal tabs! Because we're using nodemon, both our client side and server side will automatically spin back up when changes are made!
 
-##Instructions
+## Instructions
  when page loads User can see the images and can be able to click on the next button to see the next image.User can see the previous image by clicking on the previous button. And also apply tags to the specific image and addTag button  stores all the relevant data in the database.
 
 
 
-##Authors
+## Authors
  Heena Kouser
 
 
