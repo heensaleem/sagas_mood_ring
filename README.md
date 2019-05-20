@@ -11,12 +11,18 @@ This project is an image carousel tagging app! User may able to change the image
 
 
 ##Built With
+
+
  node js express React npm JSX React-Redux materialUI redux-saga
 
 ##Getting Started
+
+
  node js
 
 ##Prerequisites
+
+
  Node.js -- (https://nodejs.org/en/) Code editor Installing Download project with git clone npm install killall node if necessary npm run server on one terminal npm run client on one terminal
 
 ##Setup All data is stored in an array on the server.
