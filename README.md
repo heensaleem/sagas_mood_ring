@@ -1,49 +1,47 @@
-# React-Redux with Sagas
-
-This project is an image carousel tagging app! User may able to change the images backandforth and set the Tags to it! 
-
-## Database Setup
-
-1. Create a database named `saga_weekend`
-2. Run the queries from `database.sql` on the `saga_weekend` database.
-3. You will need to create the junction table between the `images` and `tags` tables! This app will be populating this new table.
-
-
+ # The Mood Ring
+This is an image tagging form. It asks the user to cycle through a carousel of images and apply tags as to how each image makes them feel. The applied tags then get sent to a database to be stored and recalled every time an image is loaded. All of the images paths being displayed are pulled from a database. All of the tags the user can choose from are being pulled from a database. I also added a nice css animation for the image transition.
 
 ## Built With
-
-
- node js express React npm JSX React-Redux materialUI redux-saga
+This project uses html/css, React, Redux, and Saga for the front-end and node.js, and express.js as a server and finally postgresql for a database.
 
 ## Getting Started
+To get this project running you'll have to:
 
-
- node js
+- fork and clone this repo.
+- create a postgresql database using the queries in the 'Database.sql' file (table and inserts only). star:
+- You'll want to run a postrgesql server while using this project
+in the directory you cloned this repo to, you'll need to run npm install to get the dependencies installed for this project.
+- once you have your database created and running and you've installed all dependencies, you'll have to run your express server. You should be able to do so by running npm run server.
+- Once your server is running, you can run the project in a browser by running npm run client
 
 ## Prerequisites
+In order to run this project you'll need to install:
+
+- node.js
+- express.js
+- react
+- redux
+- saga
+- postgres and
+- pg
+- All of these can also be installed using NPM 
 
 
- Node.js -- (https://nodejs.org/en/) Code editor Installing Download project with git clone npm install killall node if necessary npm run server on one terminal npm run client on one terminal
+## Installing
+Download this project.
+- install prerequisite libraries listed above.
+- run npm install from project directory in terminal
+- run npm run server to start your express server
+- run npm run client to open this project up in a browser
 
-## Setup All data is stored in an array on the server.
+## Completed Features
+- Developed react components that display on the DOM
+- The DOM displays an image and buttons to switch between them.
+- The DOM displays the currently applied tags on the current visible image and allows you to select a new tag to add.
+- All image paths are stored on a postresql database and are collected when the page loads.
 
-Running the server code requires nodemon. If you don't already have nodemon, install it globally with npm install nodemon --global.
-
-npm install npm run server
-
-Now that the server is running, open a new terminal tab with cmd + t and start the react client app.
-
-npm run client
-
-Between the server and client, you'll need two terminal tabs! Because we're using nodemon, both our client side and server side will automatically spin back up when changes are made!
-
-## Instructions
- when page loads User can see the images and can be able to click on the next button to see the next image.User can see the previous image by clicking on the previous button. And also apply tags to the specific image and addTag button  stores all the relevant data in the database.
-
-
-
-## Authors
- Heena Kouser
+## Author
+Heena Kouser
 
 
 
