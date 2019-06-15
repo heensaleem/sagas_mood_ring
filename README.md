@@ -26,6 +26,9 @@ In order to run this project you'll need to install:
 - pg
 - All of these can also be installed using NPM 
 
+## Screenshot
+<img width="1274" alt="Screen Shot 2019-06-15 at 12 29 26 AM" src="https://user-images.githubusercontent.com/47267211/59547449-b755b780-8f04-11e9-9b75-4d6a4b9c1caa.png">
+
 
 ## Installing
 Download this project.
